@@ -1,0 +1,104 @@
+<!doctype html>
+
+<!-- ✅ 页面是英语  -->
+<html lang="en">
+<!-- ✅ 基础模板，所有页面都继承这个模板 -->
+<!-- 基础模板包含了所有页面都需要的元素，如导航栏、页眉、页脚等 -->
+
+<!-- ✅ 页面头部 -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Learning Log</title>
+
+    {% load django_bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<!-- ✅ 页面主体 -->
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+  <div class="container-fluid">
+    <!-- Brand -->
+    <!--品牌 / Logo / 网站名称区域-->
+    <a class="navbar-brand" href="{% url 'learning_logs:index' %}">
+      Learning Log
+    </a>
+
+    <!-- 汉堡按钮 -->
+    <button class="navbar-toggler" type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- ✅ 折叠内容开始 -->
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+      <!-- 左侧链接 -->
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'learning_logs:topics' %}">
+            Topics
+          </a>
+        </li>
+      </ul>
+    <!-- 右侧账户 -->
+<ul class="navbar-nav ms-auto mb-2 mb-md-0">
+  {% if user.is_authenticated %}
+    <li class="nav-item">
+      <span class="navbar-text me-2">
+        Hello, {{ user.username }}.
+      </span>
+    </li>
+    <li class="nav-item">
+     <a class="d-inline" href="{% url 'accounts:password_change' %}">
+         <button name= 'submit' class='btn btn-outline-secondary btn-sm'>
+          修改密码
+        </button>
+      </a>
+    </li>
+    <li class="nav-item">
+      <form action="{% url 'accounts:logout' %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button name= 'submit' class='btn btn-outline-secondary btn-sm'>
+          Log out
+        </button>
+      </form>
+    </li>
+  {% else %}
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'accounts:register' %}">
+         <button name= 'submit' class='btn btn-outline-secondary btn-sm'>
+          Register
+        </button>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'accounts:login' %}">
+         <button name= 'submit' class='btn btn-outline-secondary btn-sm'>
+          Log in
+        </button>
+        
+      </a>
+    </li>
+  {% endif %}
+   </ul>   <!--定义导航栏左侧链接的代码到此结束-->
+    </div> <!--定义导航栏折叠内容的代码到此结束-->
+
+  </div>   <!--定义导航栏容器的代码到此结束--> 
+</nav>     <!--定义导航栏的代码到此结束-->
+
+<!-- ✅ 页面主体 -->
+<main class= "container">
+    <div class="pb-2 mb-2 border-bottom">
+      {% block page_header %}{% endblock page_header %}
+    </div>
+    <div>
+      {% block content %}{% endblock content %}
+    </div>
+</main>
+
+</body>
+</html>

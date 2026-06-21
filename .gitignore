@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# 虚拟环境（如果你用了 venv）
+venv/
+.env
+
+# 数据库（Django 可能用到）
+db.sqlite3
+
+# VS Code
+.vscode/
