@@ -1,0 +1,20 @@
+json
+{
+
+"build": {
+
+"builder": "Nixpacks"
+
+},
+
+"deploy": {
+
+"startCommand": "python manage.py migrate && python manage.py runserver 0.0.0.0:$PORT",
+
+"restartPolicyType": "OnFailure",
+
+"restartPolicyMaxRetries": 10
+
+}
+
+}
