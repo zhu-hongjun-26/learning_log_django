@@ -143,3 +143,7 @@ LOGIN_URL = 'accounts:login'
 
 LANGUAGE_CODE = 'zh-hans'
 TIME_ZONE = 'Asia/Shanghai'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://learninglogdjango-production.up.railway.app",
+]
