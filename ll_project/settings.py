@@ -25,7 +25,12 @@ SECRET_KEY = 'django-insecure-mibxt7sboxg%r)9t6z=a6@weyo(thgbknfcwgyowgx9$5s4&=!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']  # 或者填你的 Railway 域名，比如 'your-app.up.railway.app'
+ALLOWED_HOSTS = [
+    'learninglogdjango-production.up.railway.app',
+    'localhost',
+    '127.0.0.1',
+]
+#ALLOWED_HOSTS = ['*']  # 或者填你的 Railway 域名，比如 'your-app.up.railway.app'
 #ALLOWED_HOSTS = []
 
 # Application definition
