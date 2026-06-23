@@ -60,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'csrf.trust_host',  # <--- 加在这里，注意缩进
 ]
 
 ROOT_URLCONF = 'll_project.urls'
